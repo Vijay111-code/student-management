@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-glow" aria-hidden="true"></div>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">SM</div>
+          <div>
+            <p>School Admin</p>
+            <h1>Student Management</h1>
+          </div>
+        </div>
+
+        <section class="stats" aria-label="Student statistics">
+          <div>
+            <strong id="totalStudents">0</strong>
+            <span>Total</span>
+          </div>
+          <div>
+            <strong id="activeStudents">0</strong>
+            <span>Active</span>
+          </div>
+          <div>
+            <strong id="gradeCount">0</strong>
+            <span>Grades</span>
+          </div>
+        </section>
+
+        <nav class="side-nav" aria-label="Status filters">
+          <button class="active" data-status="All" type="button">All Students</button>
+          <button data-status="Active" type="button">Active</button>
+          <button data-status="Inactive" type="button">Inactive</button>
+          <button data-status="Graduated" type="button">Graduated</button>
+        </nav>
+      </aside>
+
+      <section class="workspace">
+        <header class="hero">
+          <div>
+            <p class="eyebrow">Student records</p>
+            <h2>A calm place to manage every student.</h2>
+            <p class="hero-copy">Track admissions, class details, scores, contact information, and status from one clean dashboard.</p>
+          </div>
+          <button id="addStudentButton" class="primary-button" type="button">Add Student</button>
+        </header>
+
+        <section class="toolbar">
+          <label class="search-box">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Name, roll number, grade, email">
+          </label>
+          <label>
+            Grade
+            <select id="gradeFilter">
+              <option value="All">All grades</option>
+            </select>
+          </label>
+          <label>
+            Sort
+            <select id="sortSelect">
+              <option value="name">Name</option>
+              <option value="rollNo">Roll number</option>
+              <option value="grade">Grade</option>
+              <option value="score">Score</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Grade</th>
+                <th>Contact</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentRows"></tbody>
+          </table>
+          <div id="emptyState" class="empty-state" hidden>No students match the current filters.</div>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="studentDialog">
+      <form id="studentForm" class="student-form">
+        <div class="dialog-title">
+          <div>
+            <p class="eyebrow">Student record</p>
+            <h3 id="formTitle">Add Student</h3>
+          </div>
+          <button id="closeDialogButton" class="icon-button" type="button" aria-label="Close">×</button>
+        </div>
+
+        <input id="studentId" type="hidden">
+        <div class="form-grid">
+          <label>Name<input id="name" required maxlength="80"></label>
+          <label>Roll No<input id="rollNo" required maxlength="24"></label>
+          <label>Grade<input id="grade" required maxlength="32" placeholder="Grade 10"></label>
+          <label>Email<input id="email" type="email" maxlength="80"></label>
+          <label>Phone<input id="phone" maxlength="24"></label>
+          <label>Score<input id="score" maxlength="8" placeholder="A+"></label>
+          <label>Status
+            <select id="status">
+              <option>Active</option>
+              <option>Inactive</option>
+              <option>Graduated</option>
+            </select>
+          </label>
+        </div>
+        <label>Notes<textarea id="notes" rows="3" maxlength="240"></textarea></label>
+        <div class="form-actions">
+          <button id="deleteButton" class="danger-button" type="button">Delete</button>
+          <span></span>
+          <button id="cancelButton" class="secondary-button" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Save Student</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
