@@ -1,0 +1,511 @@
+:root {
+  --ink: #1d1d1f;
+  --muted: #6e6e73;
+  --line: rgba(0, 0, 0, 0.1);
+  --hairline: rgba(0, 0, 0, 0.06);
+  --panel: rgba(255, 255, 255, 0.76);
+  --panel-solid: #ffffff;
+  --soft: #f5f5f7;
+  --brand: #0071e3;
+  --brand-dark: #0066cc;
+  --accent: #248a3d;
+  --danger: #d70015;
+  --warning: #b26a00;
+  --radius: 18px;
+  --shadow: 0 22px 70px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #fbfbfd;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  background:
+    radial-gradient(circle at 74% 10%, rgba(0, 113, 227, 0.12), transparent 28%),
+    radial-gradient(circle at 18% 20%, rgba(52, 199, 89, 0.1), transparent 25%),
+    linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
+}
+
+.page-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.72), transparent 28%, rgba(255, 255, 255, 0.54)),
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.92), transparent 42%);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 292px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px 22px;
+  background: rgba(251, 251, 253, 0.7);
+  border-right: 1px solid var(--hairline);
+  backdrop-filter: blur(24px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 4px 6px;
+}
+
+.brand-mark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #1d1d1f, #424245);
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.brand p,
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 1.08rem;
+  font-weight: 650;
+}
+
+h2 {
+  max-width: 760px;
+  font-size: clamp(2.35rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 0.98;
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 650;
+}
+
+.hero-copy {
+  max-width: 650px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.stats {
+  display: grid;
+  gap: 10px;
+}
+
+.stats div {
+  min-height: 86px;
+  padding: 17px 16px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.04);
+}
+
+.stats strong,
+.stats span {
+  display: block;
+}
+
+.stats strong {
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.stats span {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.side-nav {
+  display: grid;
+  gap: 6px;
+}
+
+.side-nav button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--muted);
+  text-align: left;
+  padding: 0 13px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.side-nav button:hover,
+.side-nav button.active {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--ink);
+}
+
+.workspace {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 24px;
+  padding: 54px min(6vw, 72px);
+}
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 20px 0 18px;
+}
+
+.primary-button,
+.secondary-button,
+.danger-button,
+.icon-button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0 18px;
+  font-weight: 650;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.primary-button {
+  background: var(--brand);
+  color: white;
+  box-shadow: 0 10px 22px rgba(0, 113, 227, 0.22);
+}
+
+.primary-button:hover {
+  background: var(--brand-dark);
+  transform: translateY(-1px);
+}
+
+.secondary-button,
+.icon-button {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--ink);
+}
+
+.danger-button {
+  background: rgba(215, 0, 21, 0.08);
+  color: var(--danger);
+}
+
+.icon-button {
+  display: grid;
+  width: 38px;
+  padding: 0;
+  place-items: center;
+  font-size: 1.35rem;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 180px 180px;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 22px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.045);
+  color: var(--ink);
+  outline: none;
+}
+
+input,
+textarea {
+  padding: 12px 14px;
+}
+
+select {
+  min-height: 44px;
+  padding: 0 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(0, 113, 227, 0.46);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+}
+
+.table-wrap {
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 18px 18px;
+  border-bottom: 1px solid var(--hairline);
+  text-align: left;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr {
+  transition: background 140ms ease;
+}
+
+tbody tr:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+th {
+  background: rgba(245, 245, 247, 0.86);
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+td {
+  font-size: 0.95rem;
+}
+
+.student-name {
+  display: grid;
+  gap: 5px;
+}
+
+.student-name strong {
+  overflow-wrap: anywhere;
+  font-weight: 650;
+}
+
+.student-name span,
+.muted {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 11px;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.status-active {
+  background: rgba(36, 138, 61, 0.1);
+  color: var(--accent);
+}
+
+.status-inactive {
+  background: rgba(178, 106, 0, 0.1);
+  color: var(--warning);
+}
+
+.status-graduated {
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--brand);
+}
+
+.row-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.mini-button {
+  min-height: 32px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--ink);
+  padding: 0 12px;
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.mini-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.empty-state {
+  padding: 34px;
+  color: var(--muted);
+  text-align: center;
+}
+
+dialog {
+  width: min(720px, calc(100vw - 28px));
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(24px);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+.student-form {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+}
+
+.dialog-title,
+.form-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.form-actions {
+  grid-template-columns: auto 1fr auto auto;
+}
+
+@media (max-width: 1040px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .side-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .side-nav button {
+    text-align: center;
+  }
+}
+
+@media (max-width: 760px) {
+  .sidebar,
+  .workspace {
+    padding: 18px;
+  }
+
+  .workspace {
+    gap: 18px;
+  }
+
+  .hero,
+  .toolbar,
+  .form-grid,
+  .form-actions,
+  .side-nav,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    display: grid;
+  }
+
+  h2 {
+    font-size: 2.3rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 820px;
+  }
+
+  .form-actions span {
+    display: none;
+  }
+}
