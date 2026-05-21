@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: student-management-java
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
